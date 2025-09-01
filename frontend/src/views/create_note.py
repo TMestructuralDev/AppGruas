@@ -1,71 +1,42 @@
 import flet as ft
-from utils.date_picker import date_picker_field
-from utils.time_picker import time_picker_field
-from components.signature import create_signature_canvas, clear_canvas
+from components.note_form import NoteForm
 
-class Create(ft.Column):
+class CreateNoteView(ft.Container):
     def __init__(self, page: ft.Page):
         super().__init__()
-        
-        self.spacing = 10
+        self.page = page
+        self.padding = 20
         self.expand = True
-        self.scroll = ft.ScrollMode.ALWAYS 
+        self.alignment = ft.alignment.center
         
-        self.controls.append(
-            ft.TextField(label="Nombre", hint_text="Nombre")
-        )
-        self.controls.append(
-            ft.TextField(label="Telefono", hint_text="Telefono")
-        )
-        self.controls.append(
-            ft.TextField(label="Empresa", hint_text="Empresa")
-        )
-        self.controls.append(
-            date_picker_field(page, label="Fecha")
-        )
-        self.controls.append(
-            ft.TextField(label="Ubicacion", hint_text="Ubicacion")
-        )
-        self.controls.append(
-            ft.TextField(label="Equipo", hint_text="Equipo")
-        )
-        self.controls.append(
-            ft.TextField(label="Operador", hint_text="Operador")
-        )
-        self.controls.append(
-            ft.TextField(label="Ayudante", hint_text="Ayudante")
-        )
-        self.controls.append(
-            ft.TextField(label="Trabajo a Realizar", hint_text="Trabajo a Realizar", multiline=True)
-        )
-        self.controls.append(
-            time_picker_field(page, label="Salida")
-        )
-        self.controls.append(
-            time_picker_field(page, label="Llegada")
-        )
-        self.controls.append(
-            time_picker_field(page, label="Termino")
-        )
-        self.controls.append(
-            time_picker_field(page, label="Retorno")
-        )
-        self.controls.append(
-            ft.TextField(label="Costo Hr/Maniobra", hint_text="Costo Hr/Maniobra")
+        self.card = ft.Card(
+            content=ft.Column(
+                controls=[
+                    ft.Icon(ft.Icons.NOTE_ADD_ROUNDED, size=150, color=ft.Colors.GREEN_400),
+                ],
+                alignment=ft.MainAxisAlignment.CENTER,
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                spacing=20,
+                expand=True,
+            ),
+            elevation=10,
+            width=400
         )
         
-        self.signature_canvas = create_signature_canvas(width=150, height=150)
-        self.controls.append(ft.Text("Firma Cliente:"))
-        self.controls.append(self.signature_canvas)
-        self.controls.append(
-            ft.ElevatedButton("Limpiar Firma", on_click=lambda e: clear_canvas(self.signature_canvas))
-        )
-        
-        self.controls.append(
-            ft.ElevatedButton("Enviar Nota")
-        )
-        
-        self.controls.append(
-            ft.TextButton("Abrir Nota", icon=ft.Icons.NOTE_ADD_OUTLINED, icon_color=ft.Colors.GREEN_400)
-        )
-        
+        # Mostrar tarjeta inicial
+        self.content = self.card
+    
+    def show_form(self, e):
+        """Mostrar formulario con botón regresar"""
+        self.content = ft.Column([
+            ft.TextButton("← Regresar", on_click=self.back_to_card),
+            NoteForm(self.page)
+        ])
+        self.alignment = ft.alignment.top_left
+        self.page.update()
+    
+    def back_to_card(self, e):
+        """Regresar a tarjeta - reutiliza la tarjeta existente"""
+        self.content = self.card
+        self.alignment = ft.alignment.center
+        self.page.update()
