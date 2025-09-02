@@ -10,17 +10,15 @@ class CreateNoteView(ft.Container):
         self.alignment = ft.alignment.center
         
         self.card = ft.Card(
-            content=ft.Column(
-                controls=[
-                    ft.Icon(ft.Icons.NOTE_ADD_ROUNDED, size=150, color=ft.Colors.GREEN_400),
-                ],
-                alignment=ft.MainAxisAlignment.CENTER,
-                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-                spacing=20,
-                expand=True,
+            content=ft.Container(
+                content=ft.Icon(ft.Icons.NOTE_ADD_ROUNDED, size=150, color=ft.Colors.GREEN_400),
+                alignment=ft.alignment.center,
+                on_click=self.show_form, 
+                padding=50
             ),
-            elevation=10,
-            width=400
+            width=400,
+            height=400,
+            elevation=10
         )
         
         # Mostrar tarjeta inicial
