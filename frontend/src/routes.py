@@ -1,9 +1,12 @@
 import flet as ft
 from components.top_bar import Top
 from components.bottom_bar import Bottom
+from components.note_form import NoteForm
 from views.create_note import CreateNoteView
 from views.open_notes import OpenNotesView
 
+
+    
 def get_view_for_route(route: str, page: ft.Page) -> ft.View:
     """
     Retorna la vista correspondiente a una ruta
@@ -15,6 +18,17 @@ def get_view_for_route(route: str, page: ft.Page) -> ft.View:
             controls=[
                 Top(),
                 CreateNoteView(page),
+                Bottom()
+            ]
+        )
+        
+    elif route == "/form":
+        return ft.View(
+            route="/form",
+            controls=[
+                Top(),
+                ft.TextButton("← Regresar", on_click=lambda e: page.on_view_pop(page.views)),
+                NoteForm(page),
                 Bottom()
             ]
         )

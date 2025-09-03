@@ -4,39 +4,28 @@ from routes import get_view_for_route
 class Router:
     def __init__(self, page: ft.Page):
         self.page = page
-        self.setup_navigation()
-    
-    def setup_navigation(self):
-        """Configura los manejadores de navegación"""
         self.page.on_route_change = self.route_change
         self.page.on_view_pop = self.view_pop
-    
-    def route_change(self, route):
-        """Maneja los cambios de ruta"""
-        self.page.views.clear()
-        
-        # Obtener vista para la ruta actual
+
+        # Navegar a la ruta inicial
+        self.page.go(self.page.route)
+
+    def route_change(self, e: ft.RouteChangeEvent):
+        """Construye la vista correspondiente a la ruta actual"""
+        #self.page.views.clear()
+        if e.route in ["/open", "/create", "/closed"]:
+            self.page.views.clear()
         view = get_view_for_route(self.page.route, self.page)
-        
-        if view:
-            self.page.views.append(view)
-        else:
-            # Ruta no encontrada, ir al inicio
-            self.page.views.append(get_view_for_route("/open", self.page))
-        
+        self.page.views.append(view)
         self.page.update()
+
+    def view_pop(self, view: ft.View):
+        """Maneja la acción de 'regresar'"""
+        self.page.views.pop() if self.page.views else None
     
-    def view_pop(self, view):
-        """Maneja el botón de regresar"""
-        self.page.views.pop()
-        
-        if self.page.views:
-            top_view = self.page.views[-1]
-            self.page.go(top_view.route)
-        else:
-            # Si no hay vistas, ir al inicio
-            self.page.go("/open")
+        # ir a la vista anterior o fallback
+        target_route = self.page.views[-1].route if self.page.views else "/open"
+        self.page.go(target_route)
+        self.page.update()
+
     
-    def navigate_to(self, route):
-        """Navega a una ruta específica"""
-        self.page.go(route)
