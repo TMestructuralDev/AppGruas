@@ -27,7 +27,7 @@ def get_view_for_route(route: str, page: ft.Page) -> ft.View:
             route="/form",
             controls=[
                 Top(),
-                ft.TextButton("← Regresar", on_click=lambda e: page.on_view_pop(page.views)),
+                #ft.TextButton("← Regresar", on_click=lambda e: page.on_view_pop(page.views)),
                 NoteForm(page),
                 Bottom()
             ]
