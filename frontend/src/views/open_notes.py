@@ -1,12 +1,21 @@
 import flet as ft
 from data.sample_notes import SAMPLE_NOTES
-from components.note_card import create_note_card
+from components.open_note_card import OpenNoteCard
 
 class OpenNotesView(ft.Column):
     def __init__(self, page: ft.Page):
         super().__init__()
+        self.expand = True  
+        self.scroll = ft.ScrollMode.ALWAYS  
         
-        self.controls.append(ft.Text("Notas Abiertas", size=20, weight=ft.FontWeight.BOLD))
-        
-        for note in SAMPLE_NOTES:
-            self.controls.append(create_note_card(note))
+        self.cards = ft.Container(
+            expand=True,
+            alignment=ft.alignment.top_center,  
+            content=ft.Column(
+                horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                spacing=20,
+                controls=[OpenNoteCard(note) for note in SAMPLE_NOTES]
+            )
+        )
+
+        self.controls.append(self.cards)

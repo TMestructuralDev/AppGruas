@@ -53,7 +53,10 @@ def create_signature_canvas(width: int = 300, height: int = 150) -> ft.Container
 
 def clear_canvas(container: ft.Container):
     """Limpia el canvas dentro del container"""
-    canvas = container.content
-    canvas.shapes.clear()
-    canvas.shapes.append(cv.Fill(ft.Paint(color=ft.Colors.WHITE)))
-    canvas.update()
+    canvas = container.content  # Canvas dentro del container
+
+    # Solo actualizar si está agregado a la página
+    if canvas.page is not None:
+        canvas.shapes.clear()
+        canvas.shapes.append(cv.Fill(ft.Paint(color=ft.Colors.WHITE)))
+        canvas.update()

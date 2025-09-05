@@ -8,13 +8,14 @@ class NoteForm(ft.Column):
         super().__init__()
         self.spacing = 10
         self.expand = True
+        self.signature_canvas = create_signature_canvas(width=150, height=150)
                 # ---------- BOTÓN REGRESAR FIJO ARRIBA ----------
-        self.back_button = ft.TextButton(
+        '''self.back_button = ft.TextButton(
             text="Regresar",
             icon=ft.Icons.ARROW_BACK,
             icon_color=ft.Colors.GREEN_400,
             on_click=lambda e: page.on_view_pop(page.views)
-        )
+        )'''
 
         # ---------- FORMULARIO SCROLL ----------
         self.form = ft.Column(
@@ -37,14 +38,14 @@ class NoteForm(ft.Column):
                 time_picker_field(page, label="Retorno"),
                 ft.TextField(label="Costo Hr/Maniobra", hint_text="Costo Hr/Maniobra"),
                 ft.Text("Firma Cliente:"),
-                create_signature_canvas(width=150, height=150),
-                ft.ElevatedButton("Limpiar Firma", on_click=lambda e: clear_canvas(self.controls[-2])),
+                self.signature_canvas,
+                ft.ElevatedButton("Limpiar Firma", on_click=lambda e: clear_canvas(self.signature_canvas)),
                 ft.ElevatedButton("Enviar Nota"),
                 ft.TextButton("Abrir Nota", icon=ft.Icons.NOTE_ADD_OUTLINED, icon_color=ft.Colors.GREEN_400)
             ]
         )
         
         self.controls.extend([
-            self.back_button,  
+            #self.back_button,  
             self.form    
         ])

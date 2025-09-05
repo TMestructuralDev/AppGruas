@@ -14,7 +14,7 @@ class CreateNoteView(ft.Container):
                 content=ft.Icon(
                     ft.Icons.NOTE_ADD_ROUNDED,
                     size=150,
-                    color=ft.Colors.GREEN_400
+                    color=ft.Colors.PINK_ACCENT_400
                 ),
                 alignment=ft.alignment.center,
                 padding=50,

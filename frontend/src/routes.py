@@ -4,7 +4,7 @@ from components.bottom_bar import Bottom
 from components.note_form import NoteForm
 from views.create_note import CreateNoteView
 from views.open_notes import OpenNotesView
-
+from views.closed_notes import ClosedNotesView
 
     
 def get_view_for_route(route: str, page: ft.Page) -> ft.View:
@@ -48,7 +48,7 @@ def get_view_for_route(route: str, page: ft.Page) -> ft.View:
             route="/closed",
             controls=[
                 Top(),
-                ft.Text("Vista de Notas Cerradas - Por implementar", size=20),
+                ClosedNotesView(page),
                 Bottom()
             ]
         )
