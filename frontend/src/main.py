@@ -1,5 +1,5 @@
 import flet as ft
-from router import Router
+from controllers.router import Router
 
 def main(page: ft.Page):
     page.title = "Sistema de Notas"

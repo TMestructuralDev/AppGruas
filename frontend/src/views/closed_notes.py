@@ -1,6 +1,6 @@
 import flet as ft
 from data.sample_notes import SAMPLE_NOTES
-from components.closed_note_card import ClosedNoteCard
+from components.widgets.closed_note_card import ClosedNoteCard
 
 class ClosedNotesView(ft.Column):
     def __init__(self, page: ft.Page):

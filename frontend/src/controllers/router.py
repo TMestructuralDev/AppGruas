@@ -1,5 +1,5 @@
 import flet as ft
-from routes import get_view_for_route
+from urls.routes import get_view_for_route
 
 class Router:
     def __init__(self, page: ft.Page):

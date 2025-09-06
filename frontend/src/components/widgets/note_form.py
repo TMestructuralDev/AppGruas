@@ -1,7 +1,7 @@
 import flet as ft
 from utils.date_picker import date_picker_field
 from utils.time_picker import time_picker_field
-from components.signature import create_signature_canvas, clear_canvas
+from components.widgets.signature import create_signature_canvas, clear_canvas
 
 class NoteForm(ft.Column):
     def __init__(self, page: ft.Page):
