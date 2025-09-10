@@ -3,6 +3,7 @@ from controllers.router import Router
 
 def main(page: ft.Page):
     page.title = "Sistema de Notas"
+    page.bgcolor = "#121212"
     
     # Inicializar el router
     router = Router(page)
