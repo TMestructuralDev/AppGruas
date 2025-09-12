@@ -4,30 +4,30 @@ from utils.time_picker import time_picker_field
 from components.widgets.signature import create_signature_canvas, clear_canvas
 
 class NoteForm(ft.Column):
-    def __init__(self, page: ft.Page):
+    def __init__(self, page: ft.Page,  note: dict = None): # note: dict es para prueba, eliminar
         super().__init__()
         self.spacing = 10
         self.expand = True
         self.signature_canvas = create_signature_canvas(width=150, height=150)
-                # ---------- BOTÓN REGRESAR FIJO ARRIBA ----------
-        '''self.back_button = ft.TextButton(
-            text="Regresar",
-            icon=ft.Icons.ARROW_BACK,
-            icon_color=ft.Colors.GREEN_400,
-            on_click=lambda e: page.on_view_pop(page.views)
-        )'''
+        
+        # ---------- DATOS PRUEBA ----------
+        # Extraemos valores si hay nota
+        nombre = note.get("nombre", "") if note else ""
+        telefono = note.get("telefono", "") if note else ""
+        empresa = note.get("empresa", "") if note else ""
+        ubicacion = note.get("ubicacion", "") if note else ""
 
-        # ---------- FORMULARIO SCROLL ----------
+        # ---------- FORM SCROLL ----------
         self.form = ft.Column(
             expand=True,
             scroll=ft.ScrollMode.ALWAYS,
             spacing=10,
             controls=[
-                ft.TextField(label="Nombre", hint_text="Nombre"),
-                ft.TextField(label="Telefono", hint_text="Telefono"),
-                ft.TextField(label="Empresa", hint_text="Empresa"),
+                ft.TextField(value=nombre, label="Nombre", hint_text="Nombre"),
+                ft.TextField(value= telefono, label="Telefono", hint_text="Telefono"),
+                ft.TextField(value=empresa, label="Empresa", hint_text="Empresa"),
                 date_picker_field(page, label="Fecha"),
-                ft.TextField(label="Ubicacion", hint_text="Ubicacion"),
+                ft.TextField(value=ubicacion, label="Ubicacion", hint_text="Ubicacion"),
                 ft.TextField(label="Equipo", hint_text="Equipo"),
                 ft.TextField(label="Operador", hint_text="Operador"),
                 ft.TextField(label="Ayudante", hint_text="Ayudante"),
@@ -45,7 +45,4 @@ class NoteForm(ft.Column):
             ]
         )
         
-        self.controls.extend([
-            #self.back_button,  
-            self.form    
-        ])
+        self.controls.append(self.form)

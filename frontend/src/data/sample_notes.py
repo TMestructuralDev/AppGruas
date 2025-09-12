@@ -15,7 +15,8 @@ SAMPLE_NOTES = [
         "llegada": "08:15",
         "termino": "16:30",
         "retorno": "17:15",
-        "costo_hr_maniobra": "$1,200.00"
+        "costo_hr_maniobra": "$1,200.00",
+        "abierta": True,
     },
     {
         "id": 2,
@@ -32,7 +33,8 @@ SAMPLE_NOTES = [
         "llegada": "07:30",
         "termino": "15:45",
         "retorno": "16:30",
-        "costo_hr_maniobra": "$1,800.00"
+        "costo_hr_maniobra": "$1,800.00",
+        "abierta": True,
     },
     {
         "id": 3,
@@ -43,13 +45,14 @@ SAMPLE_NOTES = [
         "ubicacion": "Carretera Mazatlán-Culiacán",
         "equipo": "Grúa Móvil 80T",
         "operador": "Israel",
-        "ayudante": "Juan",
+        "ayudante": "Kiko",
         "trabajo_realizar": "Colocación de vigas para puente",
         "salida": "05:30",
         "llegada": "06:45",
         "termino": "18:00",
         "retorno": "19:15",
-        "costo_hr_maniobra": "$2,500.00"
+        "costo_hr_maniobra": "$2,500.00",
+        "abierta": True,
     },
     {
         "id": 2,
@@ -66,7 +69,8 @@ SAMPLE_NOTES = [
         "llegada": "07:30",
         "termino": "15:45",
         "retorno": "16:30",
-        "costo_hr_maniobra": "$1,800.00"
+        "costo_hr_maniobra": "$1,800.00",
+        "abierta": True,
     },
     {
         "id": 3,
@@ -83,6 +87,7 @@ SAMPLE_NOTES = [
         "llegada": "06:45",
         "termino": "18:00",
         "retorno": "19:15",
-        "costo_hr_maniobra": "$2,500.00"
+        "costo_hr_maniobra": "$2,500.00",
+        "abierta": False,
     },
 ]

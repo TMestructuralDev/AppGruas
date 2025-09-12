@@ -8,7 +8,7 @@ class OpenNoteCard(ft.Card):
         self.border_radius = 16
         self.elevation = 6
         self.width = 260
-        #elf.height = 280
+        #self.height = 280
         self.shadow_color = ft.Colors.with_opacity(0.3, "#2BD10A")
         self.clip_behavior = ft.ClipBehavior.ANTI_ALIAS
         

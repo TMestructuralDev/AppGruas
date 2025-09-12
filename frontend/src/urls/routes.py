@@ -13,6 +13,8 @@ def get_view_for_route(route: str, page: ft.Page) -> ft.View:
     """
     
     if route == "/create":
+        # ------ REMOVER NOTA PARA PRUEBA
+        page.session.remove("nota_actual") # <----
         return ft.View(
             route="/create",
             controls=[
@@ -21,14 +23,25 @@ def get_view_for_route(route: str, page: ft.Page) -> ft.View:
                 Bottom()
             ]
         )
-        
+      
+    #elif route == "/form":
+     #   return ft.View(
+      #      route="/form",
+       #     controls=[
+        #        Top(),
+         #       NoteForm(page),
+          #      Bottom()
+           # ]
+        #)
+    
+    # -------- FORMULARIO DE NOTAS DE PRUEBA     
     elif route == "/form":
+        note = page.session.get("nota_actual")  # <-- obtiene la nota seleccionada
         return ft.View(
             route="/form",
             controls=[
                 Top(),
-                #ft.TextButton("← Regresar", on_click=lambda e: page.on_view_pop(page.views)),
-                NoteForm(page),
+                NoteForm(page, note=note),  # <-- pasa la nota al formulario
                 Bottom()
             ]
         )
