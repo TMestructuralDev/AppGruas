@@ -8,7 +8,7 @@ class CreateNoteView(ft.Container):
         self.expand = True
         self.alignment = ft.alignment.center
 
-        # Tarjeta inicial con icono y texto
+        
         self.content = ft.Card(
             width=400,
             height=400,
