@@ -1,9 +1,10 @@
 import flet as ft 
+from theme.colors import COLORS
 
 class Bottom(ft.BottomAppBar):
     def __init__(self): 
         super().__init__()
-        self.bgcolor = ft.Colors.BLACK
+        self.bgcolor = COLORS["bottom_bar_color"]
         self.shape = ft.NotchShape.CIRCULAR
         
         self.content = ft.Row(
@@ -14,6 +15,8 @@ class Bottom(ft.BottomAppBar):
                     icon_color=ft.Colors.PINK_ACCENT_400,
                     style=ft.ButtonStyle(color=ft.Colors.WHITE),
                     expand=True,
+                    elevation = 8,
+                    bgcolor = COLORS["bottom_bar_button_color"],
                     on_click=lambda e: self.page.go("/create")
                 ),
                 ft.ElevatedButton(
@@ -22,6 +25,8 @@ class Bottom(ft.BottomAppBar):
                     icon_color=ft.Colors.GREEN_400,
                     style=ft.ButtonStyle(color=ft.Colors.WHITE),
                     expand=True,
+                    elevation = 8,
+                    bgcolor = COLORS["bottom_bar_button_color"],
                     on_click=lambda e: self.page.go("/open")
                 ),
                 ft.ElevatedButton(
@@ -30,6 +35,8 @@ class Bottom(ft.BottomAppBar):
                     icon_color=ft.Colors.DEEP_ORANGE_500,
                     style=ft.ButtonStyle(color=ft.Colors.WHITE),
                     expand=True,
+                    elevation = 8,
+                    bgcolor = COLORS["bottom_bar_button_color"],
                     on_click=lambda e: self.page.go("/closed")
                 ),
             ],

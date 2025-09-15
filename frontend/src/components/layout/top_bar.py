@@ -1,10 +1,11 @@
 import flet as ft
+from theme.colors import COLORS
 
 class Top(ft.AppBar):
     def __init__(self):
         super().__init__()
         self.title=ft.Text("TM GRUAS")
-        self.bgcolor=ft.Colors.BLACK
+        self.bgcolor= COLORS['top_bar_color']
         
         self.actions=[
             ft.TextButton(
