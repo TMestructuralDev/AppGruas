@@ -17,16 +17,18 @@ def get_view_for_route(route: str, page: ft.Page) -> ft.View:
     if route == "/create":
         return ft.View(
             route="/create",
+            bgcolor=COLORS["main_bg_color"],
             controls=[
                 Top(),
                 CreateNoteView(page),
                 Bottom()
             ]
         )
-      
+    
     elif route == "/form":
         return ft.View(
             route="/form",
+            bgcolor=COLORS["main_bg_color"],
             controls=[
                 Top(),
                 NoteForm(page),
@@ -49,6 +51,7 @@ def get_view_for_route(route: str, page: ft.Page) -> ft.View:
     elif route == "/closed":
         return ft.View(
             route="/closed",
+            bgcolor=COLORS["main_bg_color"],
             controls=[
                 Top(),
                 ClosedNotesView(page),

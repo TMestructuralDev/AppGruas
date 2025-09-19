@@ -5,12 +5,13 @@ class OpenNoteCard(ft.Card):
     def __init__(self, note_data):
         super().__init__()
         
-        self.color = "#E4E4E4"
+        self.color = "#1E1E1E"
+        self.surface_tint_color = "#2A2A2A"
         self.border_radius = 8
         self.elevation = 12
         self.width = 320
         self.margin = 12
-        self.shadow_color = ft.Colors.with_opacity(0.9, "#047504")
+        self.shadow_color = ft.Colors.with_opacity(0.9, "#4CAF50")
         self.clip_behavior = ft.ClipBehavior.ANTI_ALIAS
         
         self.content=ft.Column(
