@@ -8,7 +8,7 @@ class Note (models.Model):
     empresa = models.CharField(max_length=20, blank=True, null=True)
     fecha = models.DateField()
     ubicacion = models.CharField(max_length=50, blank=True, null=True)
-    equipo = models.CharField(max_length=50, blank=True, null=True)
+    equipo = models.CharField(max_length=20, blank=True, null=True)
     operador = models.CharField(max_length=20, blank=True, null=True)
     ayudante = models.CharField(max_length=20, blank=True, null=True)
     trabajo_realizar = models.TextField(max_length=100)
@@ -18,9 +18,12 @@ class Note (models.Model):
     llegada = models.TimeField()
     termino = models.TimeField()
     retorno = models.TimeField()
+    total_horas = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     # Costos
-    costo_hr_maniobra = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    costo_hora = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    costo_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    costo_total_iva = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     # Firma cliente (puede ser imagen en base64 o archivo)
     firma_cliente = models.ImageField(upload_to="firmas/")
