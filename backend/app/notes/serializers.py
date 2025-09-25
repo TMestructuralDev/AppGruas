@@ -27,3 +27,14 @@ class NoteSerializer(serializers.ModelSerializer):
         data["costo_total_iva"] = round(data["costo_total"] * 1.16, 2)  # IVA 16%
 
         return data
+    
+
+class NoteOpenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Note
+        fields = ["id", "nombre", "fecha", "operador", "nota_abierta"]
+        read_only_fields = ["id", "nota_abierta"]
+
+    def create(self, validated_data):
+        validated_data.setdefault("nota_abierta", True)
+        return super().create(validated_data)

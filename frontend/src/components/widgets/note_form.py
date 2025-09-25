@@ -2,7 +2,7 @@ import flet as ft
 from utils.date_picker import date_picker_field
 from utils.time_picker import time_picker_field
 from components.widgets.signature import create_signature_canvas, clear_canvas
-from handlers.note_handler import handle_note
+from handlers.note_handler import handle_open_note
 
 
 class NoteForm(ft.Column):
@@ -45,7 +45,7 @@ class NoteForm(ft.Column):
                 
                 #ft.ElevatedButton("Limpiar Firma", on_click=lambda e: clear_canvas(self.signature_canvas)),
                 ft.ElevatedButton("Enviar Nota"),
-                ft.ElevatedButton("Abrir Nota", icon=ft.Icons.NOTE_ADD_OUTLINED, icon_color=ft.Colors.GREEN_400, on_click=lambda e: handle_note(self.form))
+                ft.ElevatedButton("Abrir Nota", icon=ft.Icons.NOTE_ADD_OUTLINED, icon_color=ft.Colors.GREEN_400, on_click=lambda e: handle_open_note(self.form, page))
             ]
         )
         

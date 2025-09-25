@@ -1,4 +1,5 @@
 from flet import Column, TextField, DatePicker, TimePicker
+import flet as ft
 
 def extract_data(form_column: Column) -> dict:
     data = {}
@@ -26,4 +27,22 @@ def extract_data(form_column: Column) -> dict:
                 data[key] = None
 
 
+    return data
+
+
+def extract_open_note_data(form_column):
+    """
+    Extrae solo los datos necesarios para abrir una nota:
+    nombre, fecha y operador
+    """
+    data = {}
+    for control in form_column.controls:
+        if isinstance(control, ft.TextField):
+            if control.label == "Nombre":
+                data["nombre"] = control.value
+            elif control.label == "Operador":
+                data["operador"] = control.value
+        elif isinstance(control, ft.Row) and hasattr(control, "value") and control.value is not None:
+            # Asumimos que este Row es el date_picker_field
+            data["fecha"] = control.value.isoformat() 
     return data

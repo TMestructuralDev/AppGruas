@@ -29,3 +29,14 @@ def build_payload(form_data: dict) -> dict:
         # Estado por defecto
         "nota_abierta": True,
     }
+    
+    
+''' Adapter for opening notes '''
+
+def build_open_payload(form_data: dict) -> dict:
+    return {
+        "nombre": form_data.get("nombre"),
+        "fecha": form_data.get("fecha"),
+        "operador": form_data.get("operador"),
+
+    }
