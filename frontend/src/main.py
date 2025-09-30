@@ -10,12 +10,6 @@ from theme.colors import COLORS
 def main(page: ft.Page):
     page.title = "Sistema de Notas"
     
-    page.snack_bar = ft.SnackBar(
-        content=ft.Text(""),        # contenido inicial vacío
-        bgcolor=ft.Colors.GREEN_400 # color inicial opcional
-    )
-    page.update()
-
     # Inicializar el router
     router = Router(page)
     

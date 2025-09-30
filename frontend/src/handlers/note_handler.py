@@ -1,17 +1,18 @@
 from utils.extract_data import extract_data, extract_open_note_data
-from core.usecases.create_note import create_note
+from core.usecases.send_note import send_note
 from core.usecases.open_note import open_note
 import threading
+from handlers.snackbar_handler import show_snack
 import flet as ft
 
-def handle_note(form_column):
+def handle_send_note(form_column):
     """
     Handler:
     1. Extract form data
     2. Call Core
     """
     form_data = extract_data(form_column)
-    create_note(form_data)
+    send_note(form_data)
     
 
 def handle_open_note(form_column, page: ft.Page):
@@ -21,12 +22,15 @@ def handle_open_note(form_column, page: ft.Page):
     """
     form_data = extract_open_note_data(form_column)
 
-    
     def task():
         try:
+            # Ejecuta la lógica de abrir la nota
             open_note(form_data)
-            # Nota abierta correctamente, no mostramos mensaje
+            # Muestra SnackBar de éxito
+            show_snack(page, "Nota abierta con éxito!", success=True)
         except Exception as err:
-            print(f"Error al abrir nota: {err}")  # opcional para debug
+            print(f"Error al abrir nota: {err}")
+            # Muestra SnackBar de error
+            show_snack(page, "Error al abrir la nota", success=False)
 
     threading.Thread(target=task).start()

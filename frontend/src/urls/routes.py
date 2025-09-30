@@ -8,65 +8,24 @@ from views.closed_notes import ClosedNotesView
 from theme.colors import COLORS
 
 
-    
 def get_view_for_route(route: str, page: ft.Page) -> ft.View:
-    """
-    Retorna la vista correspondiente a una ruta
-    """
+
+    routes = {
+        "/create": CreateNoteView,
+        "/form": NoteForm,
+        "/open": OpenNotesView,
+        "/closed": ClosedNotesView,
+    }
+
     
-    if route == "/create":
-        return ft.View(
-            route="/create",
-            bgcolor=COLORS["main_bg_color"],
-            controls=[
-                Top(),
-                CreateNoteView(page),
-                Bottom()
-            ]
-        )
-    
-    elif route == "/form":
-        return ft.View(
-            route="/form",
-            bgcolor=COLORS["main_bg_color"],
-            controls=[
-                Top(),
-                NoteForm(page),
-                Bottom()
-            ]
-        )
-    
-    
-    elif route == "/open":
-        return ft.View(
-            route="/open",
-            bgcolor=COLORS["main_bg_color"],
-            controls=[
-                Top(),
-                OpenNotesView(page),
-                Bottom()
-            ]
-        )
-    
-    elif route == "/closed":
-        return ft.View(
-            route="/closed",
-            bgcolor=COLORS["main_bg_color"],
-            controls=[
-                Top(),
-                ClosedNotesView(page),
-                Bottom()
-            ]
-        )
-    
-    else:
-        
-        return ft.View(
-            route="/open",
-            bgcolor=COLORS["main_bg_color"],
-            controls=[
-                Top(),
-                OpenNotesView(page),
-                Bottom()
-            ]
-        )
+    view_route = routes.get(route, OpenNotesView)
+
+    return ft.View(
+        route=route if route in routes else "/open",
+        bgcolor=COLORS["main_bg_color"],
+        controls=[
+            Top(),
+            view_route(page),
+            Bottom()
+        ]
+    )

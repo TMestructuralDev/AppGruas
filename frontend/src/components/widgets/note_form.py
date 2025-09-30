@@ -45,7 +45,13 @@ class NoteForm(ft.Column):
                 
                 #ft.ElevatedButton("Limpiar Firma", on_click=lambda e: clear_canvas(self.signature_canvas)),
                 ft.ElevatedButton("Enviar Nota"),
-                ft.ElevatedButton("Abrir Nota", icon=ft.Icons.NOTE_ADD_OUTLINED, icon_color=ft.Colors.GREEN_400, on_click=lambda e: handle_open_note(self.form, page))
+                ft.ElevatedButton(
+                                        "Abrir Nota",
+                                        icon=ft.Icons.NOTE_ADD_OUTLINED,
+                                        icon_color=ft.Colors.GREEN_400,
+                                        on_click=lambda e: handle_open_note(self.form, page)
+                                    )
+                
             ]
         )
         

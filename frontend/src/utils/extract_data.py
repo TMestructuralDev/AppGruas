@@ -43,6 +43,5 @@ def extract_open_note_data(form_column):
             elif control.label == "Operador":
                 data["operador"] = control.value
         elif isinstance(control, ft.Row) and hasattr(control, "value") and control.value is not None:
-            # Asumimos que este Row es el date_picker_field
             data["fecha"] = control.value.isoformat() 
     return data
