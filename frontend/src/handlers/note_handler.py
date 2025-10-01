@@ -15,7 +15,7 @@ def handle_send_note(form_column):
     send_note(form_data)
     
 
-def handle_open_note(form_column, page: ft.Page):
+def handler_open_note(form_column, page: ft.Page):
     """
     Ejecuta open_note en un hilo para no bloquear la UI de Flet.
     Muestra SnackBar de éxito/error.

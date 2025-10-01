@@ -1,47 +1,34 @@
-from flet import Column, TextField, DatePicker, TimePicker
+from flet import Column, TextField
+import datetime
 import flet as ft
 
 def extract_data(form_column: Column) -> dict:
+    """
+    Extrae todos los datos de un formulario basado en TextField.
+    Fecha y horas ya vienen en formato correcto (YYYY-MM-DD / HH:MM),
+    así que no hace falta parsearlas.
+    """
     data = {}
 
     for control in form_column.controls:
-        # TextField
-        if isinstance(control, TextField):
+        if isinstance(control, ft.TextField):
             key = control.label.lower().replace(" ", "_")
-            data[key] = control.value if control.value != "" else None
-
-        # DatePicker
-        elif isinstance(control, DatePicker):
-            key = control.label.lower().replace(" ", "_")
-            if control.value is not None:
-                data[key] = control.value.strftime("%Y-%m-%d")
-            else:
-                data[key] = None
-
-        # TimePicker
-        elif isinstance(control, TimePicker):
-            key = control.label.lower().replace(" ", "_")
-            if control.value is not None:
-                data[key] = control.value.strftime("%H:%M")
-            else:
-                data[key] = None
-
+            value = control.value.strip() if control.value else None
+            data[key] = value
 
     return data
 
 
+
 def extract_open_note_data(form_column):
-    """
-    Extrae solo los datos necesarios para abrir una nota:
-    nombre, fecha y operador
-    """
     data = {}
     for control in form_column.controls:
         if isinstance(control, ft.TextField):
-            if control.label == "Nombre":
-                data["nombre"] = control.value
-            elif control.label == "Operador":
-                data["operador"] = control.value
-        elif isinstance(control, ft.Row) and hasattr(control, "value") and control.value is not None:
-            data["fecha"] = control.value.isoformat() 
+            label = control.label.strip().lower()
+            if label == "nombre":
+                data["nombre"] = control.value or None
+            elif label == "operador":
+                data["operador"] = control.value or None
+            elif label == "fecha":
+                data["fecha"] = control.value or None
     return data
