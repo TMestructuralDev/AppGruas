@@ -10,7 +10,7 @@ class CreateNoteView(ft.Container):
         self.padding = 20
 
         # Pasamos form_data al formulario para precargar campos
-        form_data = page.data if page.data else None
+        #form_data = page.data if page.data else None
         self.form = NoteForm(page, form_data=form_data)
 
         open_button = ft.ElevatedButton(
