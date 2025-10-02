@@ -5,6 +5,7 @@ class NoteAdapter:
         Convierte un diccionario de nota del backend al formato que espera OpenNoteCard.
         """
         return {
+            "nombre": note.get("nombre", "Sin nombre"),
             "operador": note.get("operador", "Sin operador"),
             "ayudante": note.get("ayudante", "Sin ayudante"),
             "empresa": note.get("empresa", "Sin empresa"),

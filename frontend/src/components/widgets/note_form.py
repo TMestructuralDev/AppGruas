@@ -3,10 +3,10 @@ from utils.date_picker import date_picker_button
 from utils.time_picker import time_picker_button
 
 class NoteForm(ft.Column):
-    def __init__(self, page: ft.Page):
+    def __init__(self, page: ft.Page, form_data=None):
         super().__init__(expand=True, spacing=10, scroll=ft.ScrollMode.ALWAYS)
         
-        self.fecha_field = ft.TextField(label="Fecha", hint_text="Selecciona una fecha")
+        self.fecha_field = ft.TextField(label="Fecha", hint_text="Selecciona una fecha", value=form_data.get("fecha") if form_data else "")
         fecha_button = date_picker_button(page, self.fecha_field)
         
         self.salida_field = ft.TextField(label="Salida", hint_text="Selecciona hora de salida")
@@ -22,7 +22,7 @@ class NoteForm(ft.Column):
 
         # Campos del formulario
         self.controls.extend([
-            ft.TextField(label="Nombre", hint_text="Nombre", max_length=20),
+            ft.TextField(label="Nombre", hint_text="Nombre", max_length=20, value=form_data.get("nombre") if form_data else ""),
             ft.TextField(label="Telefono", hint_text="Telefono", max_length=10),
             ft.TextField(label="Empresa", hint_text="Empresa", max_length=20),
             
@@ -31,7 +31,7 @@ class NoteForm(ft.Column):
             
             ft.TextField(label="Ubicacion", hint_text="Ubicacion", max_length=50),
             ft.TextField(label="Equipo", hint_text="Equipo", max_length=20),
-            ft.TextField(label="Operador", hint_text="Operador", max_length=20),
+            ft.TextField(label="Operador", hint_text="Operador", max_length=20, value=form_data.get("operador") if form_data else ""),
             ft.TextField(label="Ayudante", hint_text="Ayudante", max_length=20),
             ft.TextField(label="Trabajo a Realizar", hint_text="Trabajo a Realizar", multiline=True),
             
