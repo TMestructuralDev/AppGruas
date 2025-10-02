@@ -24,9 +24,7 @@ class OpenNotesView(ft.Container):
 
     def open_create_note(self, note_data):
         """
-        Abre la vista CreateNoteView con los datos precargados
+        Navega a la vista de edición usando el sistema de rutas
         """
-        create_note_view = CreateNoteView(self.page, form_data=note_data)
-        # Reemplazamos la columna de notas por el formulario (puedes usar modal o reemplazo directo)
-        self.content = create_note_view
-        self.page.update()
+        self.page.session.set("edit_note_data", note_data)
+        self.page.go("/create")

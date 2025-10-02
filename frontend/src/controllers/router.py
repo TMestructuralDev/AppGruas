@@ -12,9 +12,9 @@ class Router:
 
     def route_change(self, e: ft.RouteChangeEvent):
         """Construye la vista correspondiente a la ruta actual"""
-        #self.page.views.clear()
-        if e.route in ["/open", "/create", "/closed"]:
+        if e.route == "/open":
             self.page.views.clear()
+            
         view = get_view_for_route(self.page.route, self.page)
         self.page.views.append(view)
         self.page.update()
