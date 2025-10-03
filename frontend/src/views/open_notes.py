@@ -1,6 +1,5 @@
 import flet as ft
 from components.widgets.open_note_card import OpenNoteCard
-from views.create_note import CreateNoteView
 from handlers.getopen_handler import handle_open_notes
 
 class OpenNotesView(ft.Container):
@@ -10,7 +9,7 @@ class OpenNotesView(ft.Container):
         self.expand = True
         self.alignment = ft.alignment.top_center
 
-        open_notes = handle_open_notes()
+        open_notes = handle_open_notes(self.page)
 
         self.notes_column = ft.Column(
             expand=True,

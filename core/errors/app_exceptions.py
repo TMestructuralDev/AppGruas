@@ -11,3 +11,9 @@ class GatewayError(Exception):
         self.message = message
         self.status_code = status_code
         super().__init__(message)
+        
+
+class NotesFetchError(Exception):
+    """Error al obtener las notas abiertas."""
+    def __init__(self, message="No se pudieron cargar las notas abiertas"):
+        super().__init__(message)

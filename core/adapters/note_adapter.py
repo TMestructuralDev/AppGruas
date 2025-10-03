@@ -1,3 +1,4 @@
+
 class NoteAdapter:
     @staticmethod
     def to_card_format(note):
