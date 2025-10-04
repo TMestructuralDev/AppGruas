@@ -1,5 +1,5 @@
 import requests
-from core.adapters.form_adapter import build_open_payload
+from core.adapters.open_note_adapter import build_open_payload
 
 API_URL = "http://127.0.0.1:8000/api/notes/open/"  
 

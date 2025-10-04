@@ -1,8 +1,6 @@
-from flet import Column, TextField
-import datetime
 import flet as ft
 
-def extract_data(form_column: Column) -> dict:
+def extract_note_data(form_column: ft.Column) -> dict:
     """
     Extrae todos los datos de un formulario basado en TextField.
     Fecha y horas ya vienen en formato correcto (YYYY-MM-DD / HH:MM),

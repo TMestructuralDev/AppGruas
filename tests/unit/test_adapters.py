@@ -1,6 +1,6 @@
 # tests/unit/test_adapters.py
 from datetime import date, time
-from core.adapters.form_adapter import build_payload, build_open_payload
+from core.adapters.send_note_adapter import build_payload, build_open_payload
 
 def test_build_open_payload_converts_fecha():
     form_data = {

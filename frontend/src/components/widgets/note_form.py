@@ -9,10 +9,10 @@ class NoteForm(ft.Column):
         self.fecha_field = ft.TextField(label="Fecha", hint_text="Selecciona una fecha", value=form_data.get("fecha") if form_data else "")
         fecha_button = date_picker_button(page, self.fecha_field)
         
-        self.salida_field = ft.TextField(label="Salida", hint_text="Selecciona hora de salida")
-        self.llegada_field = ft.TextField(label="Llegada", hint_text="Selecciona hora de llegada")
-        self.termino_field = ft.TextField(label="Término", hint_text="Selecciona hora de término")
-        self.retorno_field = ft.TextField(label="Retorno", hint_text="Selecciona hora de retorno")
+        self.salida_field = ft.TextField(label="Salida", hint_text="Selecciona hora de salida", value=form_data.get("salida") if form_data else "")
+        self.llegada_field = ft.TextField(label="Llegada", hint_text="Selecciona hora de llegada", value=form_data.get("llegada") if form_data else "")
+        self.termino_field = ft.TextField(label="Termino", hint_text="Selecciona hora de término", value=form_data.get("termino") if form_data else "")
+        self.retorno_field = ft.TextField(label="Retorno", hint_text="Selecciona hora de retorno", value=form_data.get("retorno") if form_data else "")
         salida_button = time_picker_button(page, self.salida_field, label="Seleccionar Salida")
         llegada_button = time_picker_button(page, self.llegada_field, label="Seleccionar Llegada")
         termino_button = time_picker_button(page, self.termino_field, label="Seleccionar Término")
@@ -44,11 +44,10 @@ class NoteForm(ft.Column):
             self.retorno_field,
             retorno_button,
             
-            ft.TextField(label="Horas de Trabajo", hint_text="Total de Horas", max_length=10),
-            ft.TextField(label="Costo Hr/Maniobra", hint_text="Costo Hr/Maniobra", max_length=10),
-            ft.TextField(label="Costo Total", hint_text="Total", max_length=10),
+            ft.TextField(label="Horas de Trabajo", hint_text="Horas de Trabajo", max_length=10),
+            ft.TextField(label="Costo Hr o Maniobra", hint_text="Costo Hr o Maniobra", max_length=10),
+            ft.TextField(label="Costo Total", hint_text="Costo Total", max_length=10),
             ft.TextField(label="Costo Total con IVA", hint_text="Costo Total con IVA", max_length=10),
             
-            ft.Text("Firma Cliente:"),
             ft.TextField(label="Firma", hint_text="Firma", max_length=20),
         ])

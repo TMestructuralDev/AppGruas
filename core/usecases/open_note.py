@@ -1,7 +1,7 @@
 from core.gateways.open_notegateway import open_note_gateway
-from core.adapters.form_adapter import build_open_payload
+from core.adapters.open_note_adapter import build_open_payload
 from core.validations.open_note_validations import validate_open_note
-from core.errors.app_exceptions import ValidationError, GatewayError
+from core.errors.app_exceptions import GatewayError
 
 def open_note(form_data: dict):
     """

@@ -1,6 +1,6 @@
 
 from core.gateways.getnotes_gateway import GetNotesGateway
-from core.adapters.note_adapter import NoteAdapter
+from core.adapters.note_card_adapter import NoteAdapter
 
 def get_open_notes():
     """
