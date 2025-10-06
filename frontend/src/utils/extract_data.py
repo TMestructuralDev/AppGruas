@@ -13,8 +13,8 @@ def extract_note_data(form_column: ft.Column) -> dict:
             key = control.label.lower().replace(" ", "_")
             value = control.value.strip() if control.value else None
             data[key] = value
-
     return data
+
 
 
 

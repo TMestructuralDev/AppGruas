@@ -23,17 +23,17 @@ class NoteForm(ft.Column):
         # Campos del formulario
         self.controls.extend([
             ft.TextField(label="Nombre", hint_text="Nombre", max_length=20, value=form_data.get("nombre") if form_data else ""),
-            ft.TextField(label="Telefono", hint_text="Telefono", max_length=10),
-            ft.TextField(label="Empresa", hint_text="Empresa", max_length=20),
+            ft.TextField(label="Telefono", hint_text="Telefono", max_length=10, value=form_data.get("telefono") if form_data else ""),
+            ft.TextField(label="Empresa", hint_text="Empresa", max_length=20, value=form_data.get("empresa") if form_data else ""),
             
             self.fecha_field,
             fecha_button,
             
-            ft.TextField(label="Ubicacion", hint_text="Ubicacion", max_length=50),
-            ft.TextField(label="Equipo", hint_text="Equipo", max_length=20),
+            ft.TextField(label="Ubicacion", hint_text="Ubicacion", max_length=50, value=form_data.get("ubicacion") if form_data else ""),
+            ft.TextField(label="Equipo", hint_text="Equipo", max_length=20, value=form_data.get("equipo") if form_data else ""),
             ft.TextField(label="Operador", hint_text="Operador", max_length=20, value=form_data.get("operador") if form_data else ""),
-            ft.TextField(label="Ayudante", hint_text="Ayudante", max_length=20),
-            ft.TextField(label="Trabajo a Realizar", hint_text="Trabajo a Realizar", multiline=True),
+            ft.TextField(label="Ayudante", hint_text="Ayudante", max_length=20, value=form_data.get("ayudante") if form_data else ""),
+            ft.TextField(label="Trabajo a Realizar", hint_text="Trabajo a Realizar", multiline=True, value=form_data.get("trabajo_a_realizar") if form_data else ""),
             
             self.salida_field,
             salida_button,
@@ -44,10 +44,10 @@ class NoteForm(ft.Column):
             self.retorno_field,
             retorno_button,
             
-            ft.TextField(label="Horas de Trabajo", hint_text="Horas de Trabajo", max_length=10),
-            ft.TextField(label="Costo Hr o Maniobra", hint_text="Costo Hr o Maniobra", max_length=10),
-            ft.TextField(label="Costo Total", hint_text="Costo Total", max_length=10),
-            ft.TextField(label="Costo Total con IVA", hint_text="Costo Total con IVA", max_length=10),
+            ft.TextField(label="Horas de Trabajo", hint_text="Horas de Trabajo", max_length=10, value=form_data.get("horas_de_trabajo") if form_data else ""),
+            ft.TextField(label="Costo Hr o Maniobra", hint_text="Costo Hr o Maniobra", max_length=10, value=form_data.get("costo_hr_o_maniobra") if form_data else ""),
+            ft.TextField(label="Costo Total", hint_text="Costo Total", max_length=10, value=form_data.get("costo_total") if form_data else ""),
+            ft.TextField(label="Costo Total con IVA", hint_text="Costo Total con IVA", max_length=10, value=form_data.get("costo_total_con_iva") if form_data else ""),
             
-            ft.TextField(label="Firma", hint_text="Firma", max_length=20),
+            ft.TextField(label="Firma", hint_text="Firma", max_length=20, value=form_data.get("firma") if form_data else ""),
         ])

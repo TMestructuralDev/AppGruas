@@ -12,6 +12,7 @@ def handler_send_note(form_column, page: ft.Page):
     1. Extract form data
     2. Call Core
     """
+    page.update() # Probar sin esta funcion
     form_data = extract_note_data(form_column)
 
     def task():
