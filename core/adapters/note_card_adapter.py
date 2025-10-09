@@ -22,3 +22,9 @@ class NoteAdapter:
         Convierte una lista de notas en formato backend a lista de notas para OpenNoteCard.
         """
         return [NoteAdapter.to_card_format(note) for note in notes]
+    
+    
+    @staticmethod
+    def to_closed_card_list(notes):
+        """Versión semántica para notas cerradas (usa el mismo formato que las abiertas)."""
+        return [NoteAdapter.to_card_format(note) for note in notes]

@@ -15,3 +15,16 @@ class GetNotesGateway:
         except requests.exceptions.RequestException as e:
             print(f"Error fetching notes: {e}")
             return []
+        
+        
+    def fetch_closed_notes(self):
+        """Obtiene las notas con nota_abierta=False"""
+        try:
+            response = requests.get(self.base_url)
+            response.raise_for_status()
+            notes = response.json()
+            closed_notes = [note for note in notes if not note.get("nota_abierta", True)]
+            return closed_notes
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching closed notes: {e}")
+            return []
