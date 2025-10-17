@@ -14,3 +14,5 @@ class Top(ft.AppBar):
             icon_color=ft.Colors.PINK_400,
         ),
         ]
+        
+        # self.actions = [get_session_button(self.page)]
