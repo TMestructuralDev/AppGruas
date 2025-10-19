@@ -11,7 +11,7 @@ def extract_note_data(form_column: ft.Column) -> dict:
     for control in form_column.controls:
         if isinstance(control, ft.TextField):
             key = control.label.lower().replace(" ", "_")
-            value = control.value.strip() if control.value else None
+            value = control.value.strip() if isinstance(control.value, str) and control.value else control.value
             data[key] = value
     return data
 

@@ -53,5 +53,6 @@ def send_note_payload(form_data: dict) -> dict:
         "firma_cliente": clean_str(form_data.get("firma")),
 
         # Estado por defecto
-        "nota_abierta": True,
+        "nota_abierta": form_data.get("nota_abierta", True),
+        
     }

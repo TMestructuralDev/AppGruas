@@ -20,9 +20,8 @@ def send_note(form_data: dict):
     # Validacion de los datos despues del calculo
     validate_send_note(form_data)
     
-    # Cambiar estado: una nota enviada ya no está abierta
     form_data["nota_abierta"] = False
-
+    
     # Adaptar datos para el backend
     payload = send_note_payload(form_data)
 

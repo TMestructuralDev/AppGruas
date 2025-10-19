@@ -8,6 +8,9 @@ from controllers.router import Router
 from theme.colors import COLORS
 
 def main(page: ft.Page):
+    
+    page.adaptive = True
+    
     page.title = "Sistema de Notas"
     
     # Inicializar el router

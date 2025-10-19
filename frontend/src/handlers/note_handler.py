@@ -66,12 +66,12 @@ def handler_closed_notes(page: ft.Page):
         nonlocal notes_result
         try:
             notes = get_closed_notes()
-            print("DEBUG - Notes in handler:", notes) #DEBUG
+            
             notes_result = notes
         except GatewayError as ge:
             show_snack(page, f"Error de backend: {ge.message}", success=False)
         except Exception as err:
-            print(f"Error inesperado al obtener notas cerradas: {err}")
+            
             show_snack(page, "Error inesperado al obtener notas cerradas", success=False)
 
     thread = threading.Thread(target=task)
