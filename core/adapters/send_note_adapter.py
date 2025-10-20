@@ -27,6 +27,7 @@ def send_note_payload(form_data: dict) -> dict:
 
     return {
         # Strings directos
+        "id": form_data.get("id"), 
         "nombre": clean_str(form_data.get("nombre")),
         "telefono": clean_str(form_data.get("telefono")),
         "empresa": clean_str(form_data.get("empresa")),

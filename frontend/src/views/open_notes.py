@@ -25,5 +25,9 @@ class OpenNotesView(ft.Container):
         """
         Navega a la vista de edición usando el sistema de rutas
         """
+        
+        note_data_with_id = note_data.copy()
+        note_data_with_id["id"] = note_data.get("id") 
+    
         self.page.session.set("edit_note_data", note_data)
         self.page.go("/create")

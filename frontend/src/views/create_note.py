@@ -12,6 +12,7 @@ class CreateNoteView(ft.Container):
         
         if form_data is None:
             form_data = page.session.get("edit_note_data")
+            
             if form_data:
                 page.session.remove("edit_note_data")
                 

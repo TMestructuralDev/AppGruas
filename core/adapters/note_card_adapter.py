@@ -21,6 +21,7 @@ class NoteAdapter:
     def to_form_format(note):
         """Convierte un diccionario completo del backend al formato que espera el formulario."""
         return {
+        "id": note.get("id"),
         "nombre": note.get("nombre"),
         "telefono": note.get("telefono"),
         "empresa": note.get("empresa"),

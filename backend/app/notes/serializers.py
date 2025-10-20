@@ -13,7 +13,7 @@ class NoteOpenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Note
         fields = ["id", "nombre", "fecha", "operador", "nota_abierta"]
-        read_only_fields = ["id", "nota_abierta"]
+        read_only_fields = ["nota_abierta"]
 
     def create(self, validated_data):
         validated_data.setdefault("nota_abierta", True)

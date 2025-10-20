@@ -13,6 +13,10 @@ def extract_note_data(form_column: ft.Column) -> dict:
             key = control.label.lower().replace(" ", "_")
             value = control.value.strip() if isinstance(control.value, str) and control.value else control.value
             data[key] = value
+            
+    if hasattr(form_column, "note_id") and form_column.note_id:
+        data["id"] = form_column.note_id
+        
     return data
 
 
@@ -29,4 +33,9 @@ def extract_open_note_data(form_column):
                 data["operador"] = control.value or None
             elif label == "fecha":
                 data["fecha"] = control.value or None
+
+    
+    if hasattr(form_column, "note_id") and form_column.note_id:
+        data["id"] = form_column.note_id
+
     return data

@@ -76,5 +76,5 @@ def handler_closed_notes(page: ft.Page):
 
     thread = threading.Thread(target=task)
     thread.start()
-    thread.join()  # Esperamos a que termine para devolver los datos
+    thread.join() 
     return notes_result

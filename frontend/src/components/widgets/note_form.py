@@ -6,6 +6,8 @@ class NoteForm(ft.Column):
     def __init__(self, page: ft.Page, form_data=None):
         super().__init__(expand=True, spacing=10, scroll=ft.ScrollMode.ALWAYS)
         
+        self.note_id = form_data.get("id") if form_data and "id" in form_data else None
+        
         self.fecha_field = ft.TextField(label="Fecha", hint_text="Selecciona una fecha", read_only=True, value=form_data.get("fecha") if form_data else "")
         fecha_button = date_picker_button(page, self.fecha_field)
         
